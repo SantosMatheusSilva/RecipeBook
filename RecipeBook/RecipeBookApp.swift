@@ -10,23 +10,19 @@ import SwiftData
 
 @main
 struct RecipeBookApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                CategoriesView() // view principal 
+            }
+            .modelContainer(for: [FavoriteRecipe.self])
         }
-        .modelContainer(sharedModelContainer)
     }
+}
+
+#Preview("App Root") {
+    NavigationStack {
+        CategoriesView()
+    }
+    .modelContainer(for: FavoriteRecipe.self, inMemory: true)
 }

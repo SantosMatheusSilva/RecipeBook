@@ -2,7 +2,6 @@ import SwiftUI
 
 struct MealView: View {
     let mealID: String
-
     var body: some View {
         VStack(spacing: 16) {
             Text("Meal Details")
@@ -12,7 +11,6 @@ struct MealView: View {
                 .font(.body)
                 .foregroundStyle(.secondary)
 
-            // TODO: Replace with real meal details UI once API/model is ready.
             RoundedRectangle(cornerRadius: 12)
                 .fill(Color.gray.opacity(0.15))
                 .frame(height: 180)
